@@ -1,30 +1,29 @@
-def pal(x):
-    a=x
-    s=0
-    while x>0:
-        r=x%10
-        s=s*10+r
-        x=x//10
-    if a==s:
-        return 1
+def pal(n):
+    temp=n
+    rev=0
+    while n>0:
+        rev=rev*10+n%10
+        n//=10
+    if rev==temp:
+        return True
     else:
-        return 0
-def npal(x):
-    while pal(x)==0:
-        x=x+1
-    return x
-def ppal(x):
-    while pal(x)==0:
-        x=x-1
-    return x
-x=int(input())
-a=ppal(x)
-b=npal(x)
-if pal(x)==1:
-    print(ppal(x-1),npal(x+1))
-elif x-a<b-x:
-    print(a)
-elif x-a>b-x:
-    print(b)
-elif x-a==b-x:
-    print(a,b)
+        return False
+n=int(input())
+i=n+1
+j=n-1
+while not pal(i) and not pal(j):
+    i+=1
+    j-=1
+if pal(i) and pal(j):
+    if abs(i-n)==abs(n-i):
+        print(j,i)
+    else:
+        if abs(i-n)>abs(n-j):
+            print(j)
+        else:
+            print(i)
+elif pal(i):
+    print(i)
+else:
+    print(j)
+    
