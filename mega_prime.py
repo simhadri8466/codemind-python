@@ -1,25 +1,22 @@
-def is_prime(n):
-    fc=0
-    for i in range(1,n+1):
-        if n%i==0:
-            fc=fc+1
-    if fc==2:
-        return True
-    else:
-        return False
-a=int(input())
-mega_prime=True
-if is_prime(a)==True:
-    while a>0:
-        r=a%10
-        if is_prime(r)==False:
-            mega_prime=False
-            break
-        a=a//10
-    if mega_prime==True:
-        print("Mega Prime")
-    else:
-        print("Not Mega Prime")
-else:
-    print("Not Mega Prime")
-        
+n=int(input())
+c=0
+x=0
+a=0
+for i in range (1,n+1,1):
+    if(n%i==0):
+        c+=1
+if(c==2):
+    while(n!=0):
+        d=n%10
+        n=n//10
+        s=0
+        for j in range (1,d+1,1):
+            if(d%j==0):
+                s+=1
+        if(s==2):
+            x+=1
+        a+=1
+if(x==a and c==2):
+    print('Mega Prime')
+elif(c>2 or x!=a):
+    print('Not Mega Prime')
